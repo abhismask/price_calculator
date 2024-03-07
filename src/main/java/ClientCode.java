@@ -17,7 +17,7 @@ public class ClientCode {
         ItemConfiguration.init();
         availableItemMap = ItemConfiguration.availableItems;
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         List<String> shoppingBag = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
@@ -49,13 +49,13 @@ public class ClientCode {
         System.out.println("Total price: "+calculatePrice(availableItemMap,prepareOrderItem(shoppingBag)));
 
 
-    }
+    }*/
 
-    private static Map<String, Long> prepareOrderItem(List<String> shoppingBag){
+    public  Map<String, Long> prepareOrderItem(List<String> shoppingBag){
         return  shoppingBag.stream().collect(Collectors.groupingBy(Function.identity() , Collectors.counting()));
     }
 
-    private static String calculatePrice(Map<String, Item> availableItemMap, Map<String, Long> orderItems){
+    public  String calculatePrice(Map<String, Item> availableItemMap, Map<String, Long> orderItems){
         double result = 0.0;
         for (Map.Entry<String, Long> orderEntry: orderItems.entrySet()){
            result+= availableItemMap.get(orderEntry.getKey()).calculatePrice(availableItemMap.get(orderEntry.getKey()).getUnitPrice(),orderEntry.getValue().intValue());
